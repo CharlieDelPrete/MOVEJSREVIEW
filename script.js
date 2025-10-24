@@ -1,10 +1,8 @@
-// Helper function: render HTML into #out
 function render(html) {
   const outBox = document.getElementById("out");
   outBox.innerHTML = html;
 }
 
-/* ---------------- DEMO FUNCTIONS ---------------- */
 
 function greet() {
   let name = prompt("What is your name?");
@@ -48,19 +46,16 @@ function randomBetween() {
 function clearOutput() {
   const outBox = document.getElementById("out");
   outBox.innerHTML = "Output cleared.";
-  outBox.style.color = "";            // reset text color
-  outBox.style.backgroundColor = "";  // reset background
+  outBox.style.color = "";
+  outBox.style.backgroundColor = "";
 }
 
-/* ---------------- CHALLENGE FUNCTIONS ---------------- */
 
-// 1. Change Page Title
 function changeTitle() {
   const title = document.querySelector("header h1");
   title.textContent = "🚀 Functions by Charlie!";
 }
 
-// 2. Cycle Output Text Color
 let colorIndex = 0;
 const colors = ["red", "green", "orange", "blue", "purple"];
 
@@ -70,14 +65,18 @@ function cycleColor() {
   colorIndex = (colorIndex + 1) % colors.length;
 }
 
-// 3. Random Background Color
 function randomBgColor() {
   const outBox = document.getElementById("out");
-  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-  outBox.style.backgroundColor = randomColor;
-}
+  outBox.classList.remove("bg-light");
 
-// 4. Double a Number
+  const randomColor = "#" + Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0");
+
+  // Change background color
+  outBox.style.backgroundColor = randomColor;
+
+}
 function doubleNumber() {
   let input = prompt("Enter a number to double:");
   let num = Number(input);
@@ -89,7 +88,6 @@ function doubleNumber() {
   }
 }
 
-/* ---------------- EVENT LISTENERS ---------------- */
 document.getElementById("btnGreet").addEventListener("click", greet);
 document.getElementById("btnAvg").addEventListener("click", averageNumbers);
 document.getElementById("btnTime").addEventListener("click", timeOfDay);
